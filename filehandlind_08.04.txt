@@ -1,0 +1,440 @@
+											
+											
+											
+											
+											
+											
+					Adv 						
+						Interactive					
+	DT			Python							
+	DS	list									
+		tuple				Scripting mode					
+		set					.py				
+		dict									
+		str		IDE  							
+		frozenset									
+	type casting			Pycharm							
+	operators			VS CODE							
+	control statement			Notepad		.py 	automation				
+	loop statements			Spyder							
+	function 			sublime				.py			
+	types of function			Atom 		jupyter 		start line			
+	types of arguments										
+	decorators					cell by cell					
+	iterators										
+								last linet			
+											
+											
+											
+				Python							
+				OS							
+											
+								pandas	1.1.2		
+								numpy	2.4.6		
+								scikit learn	3.5.		
+								django	2.4		
+								request	54.5		
+											
+											
+											
+											
+						Project 					
+											
+						folder					
+									requirements.txt		
+									library		
+											
+											
+											
+											
+											
+											
+											
+											
+											
+									60	40	
+							Keshav		HDFC	Barclays	
+					HDFC						
+							library -- install		library	linary	1
+											
+									install 		
+											
+									laptop		
+											
+											
+											
+											
+				hdfc	barclays	bajaj	citi				
+			env 								
+											
+			activate	3.5	3.8	3.11	3.13				
+									virtual env		
+											
+						base env					
+											
+											
+											
+											
+											
+			file Handling:								
+											
+			File --> collection of Data 								
+											
+			file --> permenent -- > 								
+											
+			size 								
+											
+			small storage		file system						
+											
+											
+			medium storage		mysql ,mssql server		oracle				
+											
+											
+			large storage		postgre						
+											
+											
+			very large		MongoDB,dataware house 						
+					redshift						
+					snowflake						
+											
+			Type of files								
+											
+			1.text file		open --> readable text 						
+				text,							
+				csv	comm separated values						
+				json							
+				xml							
+				log							
+				config							
+			2.binary file		open -->unreadable format			third party application			
+											
+				pdf							
+				image							
+				docs		ms office			binary		
+				ppt		tools					
+				excel							
+				mp3							
+				mp4							
+				audio 							
+				video							
+				image							
+											
+											
+		Python 									
+											
+		file read									
+		write									
+											
+		move 									
+											
+		copy and paste	
+
+
+File Handling in Python:
+=========================
+
+fp = open(filename/path,mode)
+
+
+filename : filename ---
+
+test.py
+emp.txt
+
+
+c:/desktop/data/emp.txt
+
+mode : 7 modes
+
+r -  read
+w -  write
+a -  append
+r+ - read then write
+w+ - write then read
+a+ - append then read
+x -  exlusive mode
+
+===================================================
+fp = open(filename,'r') or fp =open(filename) 
+
+read -- default mode
+
+r- read 
+
+if file present then it will open file
+if not then it will return FileNotFoundError
+
+
+read() : to read all content from file
+
+file --  word count ,special chars count ,number count --> dict 
+
+fp = open("emp.txt","r")
+data =  fp.read()
+words = data.split()
+email = []
+mobile = []
+for i in words:
+    if i.endswith('@gmail.com'):
+        email.append(i)
+    elif i.isnumeric():
+        mobile.append(i)
+
+print(email)
+print(mobile)
+
+read(n) : to read number of char
+fp = open("emp.txt")
+data = fp.read(10)
+print(data)
+
+
+readlines(): it will data in list of lines
+
+
+fp = open("emp.txt")
+data = fp.readlines()
+
+for line in data:
+    for word in line.split():
+        print(word)
+
+readline():
+
+iterator -- at a time single line execute
+
+
+fp = open("emp.txt")
+print(fp.readline())
+print(fp.readline())
+print(fp.readline())
+print(fp.readline())
+print(fp.readline())
+print(fp.readline())
+
+
+=====================================================================================
+write - w
+
+fp = open(filename,'w')
+
+
+if file present then write content [override]
+if not then create file then write content
+
+writelines()
+
+fp = open("sample.txt","w")
+lines = ['1.first line','\n2.second line','\n3.third line']
+fp.writelines(lines)
+
+writable()
+
+ a- append
+if file present then write content [append] old + new
+
+if not then it will create file then write content
+
+
+r+ --> read then write
+fp = open("emp.txt",'r+')
+data  = fp.read()
+fp.write("hello this is r+ mode")
+print(data)
+
+w+ --> write then read
+
+seek --> it is use to move file pointer
+
+fp = open("emp.txt",'w+')
+fp.write("this is write mode")
+fp.seek(10)
+data =  fp.read()
+print(data)
+
+tail --> it is use to return current file pointer location
+
+
+
+
+
+fp = open("emp.txt",'w+')
+fp.write("this is write mode")
+print(fp.tell())
+data =  fp.read()
+print(data)
+
+
+a+ - 
+
+append then read
+fp = open("emp.txt","a+")
+fp.write("new content adding")
+fp.seek(0)
+data  = fp.read()
+print(data)
+
+====================================================
+old ,new add
+
+message : old
+message  =  new content
+
+
+x = exlcusive mode
+
+fp = open(filename,'x')
+
+if file present then it will return Error ,File Exist Error
+if not then it will creat file write the content
+
+
+with open("emp.txt","r") as fp:
+    data =  fp.read()
+    print(data)
+    print(fp.closed)
+print(fp.closed)
+
+
+=================================================
+CSV - comma separated values
+import csv
+with open("product.csv") as fp:
+    data = csv.reader(fp)
+    for line in data:
+        print(line[-1])
+
+import csv
+
+with open("product.csv") as fp:
+    data = csv.DictReader(fp)
+    for line in data:
+        print(line)
+
+
+
+id name city sal dept 
+
+id name sal ---> file store
+
+
+
+reader -- > list [lines]
+
+dict read  format
+
+
+
+
+import csv
+data = [
+    {"name":"arun","city":"pune","sal":4654545},
+{"name":"pawan","city":"mumbai","sal":545454},
+{"name":"kiran","city":"delhi","sal":878778},
+{"name":"rahul","city":"chennai","sal":232324},
+]
+
+temp = []
+for row in data:
+    temp.append([row['name'],row['sal']])
+
+print(temp)
+
+colname = ['name','sal']
+
+with open('emprecords1.csv','w',newline='') as fp:
+    w = csv.writer(fp)
+    w.writerow(colname)
+    w.writerow(['test1',575757])
+    w.writerows(temp)
+
+
+# with open("emprecords.csv","w",newline='') as fp:
+#     w = csv.DictWriter(fp,fieldnames=colname)
+#     w.writeheader()
+#     w.writerows(data)
+#
+
+
+
+
+
+
+
+
+
+
+import modulename
+
+
+modulename.variable
+
+modulename.functionname
+
+
+import silver as sl
+import copper as cp
+
+print(sl.prd)
+
+sl.data_fetching()
+sl.data_cleaning()
+sl.data_extraction()
+sl.test()
+
+result  = cp.add(45,76)
+print(result)
+
+cp.data_processing()
+cp.data_validation()
+cp.test()
+
+from silver import data_extraction as de,test as sltest
+from copper import test as cptest,temp
+
+cptest()
+print(temp)
+
+
+		modules		
+				
+inbuilt module			user defined module	
+				
+csv			copper.py	
+requests			silver.py	
+pandas				
+numpy				
+pypdf3				
+				
+pip install module/packagename==ver				
+				
+pip install pandas			pypi	repo
+				
+pip install pandas==1.1.2				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
